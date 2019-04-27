@@ -1,0 +1,80 @@
+﻿@using ViewBag_using.ViewModels
+@model homepageViewModel
+@{
+    ViewBag.Title = "homepage";
+}
+
+<h2>homepage</h2>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>DropDown Using Sample</h2>
+            <hr />
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+            @using (Html.BeginForm())
+            {
+                <div class="form-horizontal">
+
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Country:</label>
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(x => x.hpVM_Selected_Country_Id, Model.hpVm_CountriesData, "Please choice your country", new { @class = "form-control dropdown" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">City:</label>
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(x => x.hpVM_Selected_City_Id, Model.hpVM_CitiesData, "Please choice your city", new { @class = "form-control dropdown" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-10 col-md-offset-2">
+                            <button class="btn btn-success" type="submit">Send</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10 col-md-offset-2">
+                            <div class="alert alert-info">
+                                <b>Selected Country ID:</b>@Model.hpVM_Selected_Country_Id
+                                <b>Selected City ID:</b>@Model.hpVM_Selected_City_Id
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            }
+
+        </div>
+    </div>
+
+</div>
+
+@*
+    DropDownList ile DropDownListFor<> arasında şu fark var. DropDownListFor da gönderdiğimiz
+    modelimiz varsa modelle direkt bağlayabilmek için yapı içeriyor.
+
+    2.Fark burada başlıyor işte model gönderebildiğimiz için x=>x.ad gibi Lamda expression da
+    yazma imkanı oluşuyor DropDownListFor ile bu çok önemli.
+    Eğer ilk anda görmezse sayfayı kapatıp açın clean ve rebuild yapın.
+
+*@
+
